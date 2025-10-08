@@ -15,7 +15,6 @@ public class Service {
 
     private List<Product> products;
     private UI ui;
-    private final Storage storage = new Storage();
 
 
     public Service(UI ui, List<Product> products) {
@@ -25,19 +24,19 @@ public class Service {
 
 
     public void addProduct() {
-
-        boolean keepGoing = true;
-        while (keepGoing) {
+        
+        while (true) {
             String type = ui.menu("Choose product type to add", List.of("Belts", "Hats", "Shoes", "Back to main menu"));
             if (type == null) {
-                keepGoing = false;
                 return;
             }
             switch (type) {
                 case "Belts" -> addBelts();
                 case "Hats" -> addHats();
                 case "Shoes" -> addShoes();
-                case "Back to main menu" -> keepGoing = false;
+                case "Back to main menu" -> {
+                    return;
+                }
                 default -> ui.info("Invalid choice, try again");
             }
 

@@ -7,7 +7,6 @@ public class DialogUI implements UI {
 
     @Override
     public String prompt(String message, String type) {
-        //return JOptionPane.showInputDialog(null, message);
         return JOptionPane.showInputDialog(null, message, type, JOptionPane.QUESTION_MESSAGE);
     }
 
