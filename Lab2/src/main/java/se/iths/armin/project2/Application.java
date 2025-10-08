@@ -17,7 +17,7 @@ public class Application {
         DialogUI diaUi = new DialogUI();
         ConsoleUI consUI = new ConsoleUI();
 
-        //Service service = new Service(consUI, products);
+        //Service service = new Service(consUI, products); //Console
         Service service = new Service(diaUi, products);
 
 
