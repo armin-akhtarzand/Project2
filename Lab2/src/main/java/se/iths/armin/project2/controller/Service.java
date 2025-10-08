@@ -131,7 +131,7 @@ public class Service {
         int articleNumber = 0;
         boolean accepted = false;
         while (true) {
-            String input = ui.prompt("Enter article number: ", "Find product");
+            String input = ui.prompt("Enter article number:", "Find product");
             if (input == null) {
                 return;
             }
@@ -149,7 +149,7 @@ public class Service {
             boolean found = false;
             for (Product product : products) {
                 if (articleNumber == product.getArticleNumber()) {
-                    ui.info("Article number: " + product.getArticleNumber()
+                    ui.info("\nArticle number: " + product.getArticleNumber()
                             + "\nTitle: " + product.getTitle()
                             + "\nDescription: " + product.getDescription()
                             + "\nPrice: " + product.getPrice() + " kr"

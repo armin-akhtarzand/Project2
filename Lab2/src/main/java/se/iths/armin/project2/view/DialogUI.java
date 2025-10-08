@@ -26,7 +26,7 @@ public class DialogUI implements UI {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 opts,
-                opts.length > 0 ? opts[0] : null
+                opts.length > 0 ? opts[3] : null
         );
         if (index == JOptionPane.CLOSED_OPTION || index < 0) {
             return null;
