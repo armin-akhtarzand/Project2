@@ -18,7 +18,7 @@ public class Application {
         ConsoleUI consUI = new ConsoleUI();
 
         //Service service = new Service(consUI, products); //Console
-        Service service = new Service(diaUi, products);
+        Service service = new Service(diaUi, products); //JOptionPane
 
 
         while (true) {
