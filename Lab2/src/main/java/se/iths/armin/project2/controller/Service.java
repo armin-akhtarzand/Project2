@@ -24,7 +24,7 @@ public class Service {
 
 
     public void addProduct() {
-        
+
         while (true) {
             String type = ui.menu("Choose product type to add", List.of("Belts", "Hats", "Shoes", "Back to main menu"));
             if (type == null) {
@@ -39,16 +39,13 @@ public class Service {
                 }
                 default -> ui.info("Invalid choice, try again");
             }
-
-
         }
 
     }
 
     public void addBelts() {
         String category = "Belts";
-        boolean keepGoing = true;
-        while (keepGoing) {
+        while (true) {
             int articleNumber = askForArticleNumber(category);
             if (articleNumber == -1) return;
 
@@ -63,8 +60,7 @@ public class Service {
 
             products.add(new Belts(articleNumber, title, price, description));
             ui.info("Article number " + articleNumber + " has been added!");
-
-            keepGoing = false;
+            return;
         }
 
 
@@ -72,8 +68,7 @@ public class Service {
 
     public void addShoes() {
         String category = "Shoes";
-        boolean keepGoing = true;
-        while (keepGoing) {
+        while (true) {
             int articleNumber = askForArticleNumber(category);
             if (articleNumber == -1) return;
 
@@ -88,16 +83,14 @@ public class Service {
 
             products.add(new Shoes(articleNumber, title, price, description));
             ui.info("Article number " + articleNumber + " has been added!");
-
-            keepGoing = false;
+            return;
         }
 
     }
 
     public void addHats() {
         String category = "Hats";
-        boolean keepGoing = true;
-        while (keepGoing) {
+        while (true) {
             int articleNumber = askForArticleNumber(category);
             if (articleNumber == -1) return;
 
@@ -112,7 +105,7 @@ public class Service {
 
             products.add(new Hats(articleNumber, title, price, description));
             ui.info("Article number " + articleNumber + " has been added!");
-            keepGoing = false;
+            return;
         }
 
     }
@@ -128,22 +121,22 @@ public class Service {
             productsBuilder.append("Article number: ").append(product.getArticleNumber()).append("\n");
             productsBuilder.append("Title: ").append(product.getTitle()).append("\n");
             productsBuilder.append("Category: ").append(product.category()).append("\n\n");
+
         }
         ui.scrollableList(productsBuilder.toString());
 
     }
 
     public void findProduct() {
-        int id = 0;
+        int articleNumber = 0;
         boolean accepted = false;
         while (true) {
-
             String input = ui.prompt("Enter article number: ", "Find product");
             if (input == null) {
                 return;
             }
             try {
-                id = Integer.parseInt(input);
+                articleNumber = Integer.parseInt(input);
                 accepted = true;
                 break;
             } catch (NumberFormatException e) {
@@ -155,7 +148,7 @@ public class Service {
         if (accepted) {
             boolean found = false;
             for (Product product : products) {
-                if (id == product.getArticleNumber()) {
+                if (articleNumber == product.getArticleNumber()) {
                     ui.info("Article number: " + product.getArticleNumber()
                             + "\nTitle: " + product.getTitle()
                             + "\nDescription: " + product.getDescription()
@@ -167,7 +160,7 @@ public class Service {
 
             }
             if (!found) {
-                ui.info("Can't find product with article number: " + id);
+                ui.info("Can't find product with article number: " + articleNumber);
             }
 
 
@@ -175,9 +168,6 @@ public class Service {
 
     }
 
-    public String mainMenu(String title, List<String> choices) {
-        return ui.menu(title, choices);
-    }
 
     public List<Product> getProducts() {
         return products;

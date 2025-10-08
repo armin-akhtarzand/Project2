@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Storage {
     ObjectMapper mapper = new ObjectMapper();
-    Path file = Path.of("products.json");
+    Path file = Path.of("data/products.json");
 
     public void save(List<Product> products) {
         try {

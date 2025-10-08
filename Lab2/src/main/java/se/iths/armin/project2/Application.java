@@ -19,8 +19,8 @@ public class Application {
         boolean exit = false;
 
 
-        while (!exit) {
-            String choice = service.mainMenu("Main Menu", List.of("Add new product", "List all products", "Show product info", "Exit program"));
+        while (true) {
+            String choice = ui.menu("Main menu", List.of("Add new product", "List all products", "Show product info", "Exit program"));
             if (choice == null) {
                 return;
             }
@@ -31,7 +31,7 @@ public class Application {
                 }
                 case "List all products" -> service.listProducts();
                 case "Show product info" -> service.findProduct();
-                case "Exit program" -> exit = true;
+                case "Exit program" -> System.exit(0);
 
 
             }
